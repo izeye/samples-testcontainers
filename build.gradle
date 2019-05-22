@@ -13,17 +13,21 @@ repositories {
 
 dependencies {
 	compile("ch.qos.logback:logback-classic:$logbackVersion")
+	compile("org.elasticsearch.client:elasticsearch-rest-client:$elasticsearchVersion")
+	compile("org.elasticsearch.client:transport:$elasticsearchVersion")
+
 	runtime("mysql:mysql-connector-java:$mysqlVersion")
 	runtime("org.postgresql:postgresql:$postgresqlVersion")
-
 
 	testCompile("org.testcontainers:testcontainers:$testcontainersVersion")
 	testCompile("org.testcontainers:junit-jupiter:$testcontainersVersion")
 	testCompile("org.testcontainers:mysql:$testcontainersVersion")
 	testCompile("org.testcontainers:postgresql:$testcontainersVersion")
+	testCompile("org.testcontainers:elasticsearch:$testcontainersVersion")
 	testCompile("org.assertj:assertj-core:$assertJVersion")
 
-	testRuntime("org.junit.jupiter:junit-jupiter-engine:$jUnitJupiterVersion")
+	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jUnitJupiterVersion")
+	testRuntimeOnly("org.junit.vintage:junit-vintage-engine:$jUnitJupiterVersion")
 }
 
 test {

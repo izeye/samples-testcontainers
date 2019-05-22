@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+}
+
+group 'com.izeye.samples'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	compile("ch.qos.logback:logback-classic:$logbackVersion")
+	runtime("mysql:mysql-connector-java:$mysqlVersion")
+	runtime("org.postgresql:postgresql:$postgresqlVersion")
+
+
+	testCompile("org.testcontainers:testcontainers:$testcontainersVersion")
+	testCompile("org.testcontainers:junit-jupiter:$testcontainersVersion")
+	testCompile("org.testcontainers:mysql:$testcontainersVersion")
+	testCompile("org.testcontainers:postgresql:$testcontainersVersion")
+	testCompile("org.assertj:assertj-core:$assertJVersion")
+
+	testRuntime("org.junit.jupiter:junit-jupiter-engine:$jUnitJupiterVersion")
+}
+
+test {
+	useJUnitPlatform()
+}
+
+wrapper {
+	gradleVersion = '5.4.1'
+}
